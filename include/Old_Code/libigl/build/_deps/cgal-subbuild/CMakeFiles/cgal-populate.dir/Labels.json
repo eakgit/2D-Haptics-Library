@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/CMakeFiles/cgal-populate"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/CMakeFiles/cgal-populate.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/CMakeFiles/cgal-populate-complete.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-build.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-configure.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-download.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-install.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-patch.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-test.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/cgal-subbuild/cgal-populate-prefix/src/cgal-populate-stamp/cgal-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cgal-populate"
+		],
+		"name" : "cgal-populate"
+	}
+}

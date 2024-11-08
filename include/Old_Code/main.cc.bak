@@ -1,0 +1,230 @@
+#include <iostream>
+#include "mpf_utils.h"
+#include <iostream>
+#include <igl/opengl/create_shader_program.h>
+#include <igl/opengl/destroy_shader_program.h>
+#include <igl/opengl/glfw/Viewer.h>
+#define _USE_MATH_DEFINES
+const double dtr = 0.005;             //increment Infinitesimal transitional
+const double dth = M_PI/100;         //Infinitesimal rotational increment
+std::chrono::steady_clock::time_point sim_start,sim_end,dt_start,dt_end;
+const Eigen::RowVector3d origin = (Eigen::MatrixXd(1,3)<<0,0,0).finished(),
+	x_axis = (Eigen::MatrixXd(1,3)<<1,0,0).finished(),
+	y_axis = (Eigen::MatrixXd(1,3)<<0,1,0).finished(),
+	z_axis = (Eigen::MatrixXd(1,3)<<0,0,1).finished();
+const Eigen::Vector3d	dvx(dtr,0,0),dvy(0,dtr,0),dvz(0,0,dtr);
+
+MeshCloud* Trimesh;
+Eigen::MatrixXd mesh_vertices,mesh_vertex_normals,
+	mesh_face_color,blue_mesh_faces,green_mesh_faces = RowVector3d(0.4,0.8,0.3);
+Eigen::MatrixXi mesh_faces;
+Eigen::RowVector3d pprox,qp_vel, //Closest point on mesh to the query point
+	qp_init =  (Eigen::MatrixXd(1,3)<<1,0,0).finished();
+Query_Point qpoint(qp_init,qp_init,1);
+std::fstream pos_data,face_data,vel_data;
+std::size_t fprox,vprox;
+
+using namespace core;
+
+bool key_pressed(igl::opengl::glfw::Viewer& viewer, unsigned char key, int mod)
+{
+		Eigen::MatrixXd H= Eigen::MatrixXd::Identity(4,4);
+		Eigen::Vector4d p(qpoint.curr_pos[0],qpoint.curr_pos[1],qpoint.curr_pos[2],1);
+		if( ((key >= '0')&&(key <='9')) || key =='*' || key== '/' || key == '+')
+			{
+				switch(key)
+					{
+					case '0':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(0,1,0,0,dvx); 
+							break;
+						}
+
+					case '1':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(0,1,1,0,dvy); 
+							break;
+						}
+
+					case '2':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(0,1,2,0,dvz); 
+							break;
+						}
+
+					case '3':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(0,1,0,0,-dvx); 
+							break;
+						}
+
+					case '4':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(0,1,1,0,-dvy); 
+							break;
+						}
+
+					case '5':
+						{
+							if(qpoint.motion_state)
+								H = Homogenous_Transform(0,1,2,0,-dvz); 
+							break;
+						}
+
+					case '6':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,0,dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+
+					case '7':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,1,dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+					case '8':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,2,dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+
+					case '9':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,0,-dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+
+					case '/':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,1,-dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+
+					case '*':
+						{
+							if (qpoint.motion_state)
+								H = Homogenous_Transform(1,0,2,-dth,Eigen::MatrixXd::Zero(3,1)); 
+							break;
+						}
+					case '+':
+						{
+							qpoint.toggle_motion_state();
+
+							if (qpoint.motion_state)
+								std::cout << "Query point is in motion." << std::endl;
+							else
+								std::cout << "Query point is not in motion." << std::endl;
+							break;
+						}
+				
+					}
+				if(key!= '+')
+					qpoint.prev_pos = qpoint.curr_pos;
+			 
+				qpoint.curr_pos = (H*p).head<3>();
+				return true;
+			}
+
+		else
+			return false;
+}
+
+
+
+bool pre_draw(igl::opengl::glfw::Viewer& viewer)
+{
+	dt_start = std::chrono::steady_clock::now();
+	viewer.callback_key_pressed = &key_pressed;
+	dt_end = std::chrono::steady_clock::now();
+	
+	auto dt = std::chrono::duration_cast<std::chrono::duration<double,std::micro>>(dt_end-dt_start);
+	//std::cout << "The key press subroutine ran in " << dt.count() << " microseconds" << std::endl;
+	qp_vel = (qpoint.curr_pos-qpoint.prev_pos)/(dt.count());
+	if(Trimesh->MPF_Query(qpoint.curr_pos,5,pprox,fprox,vprox))
+		{
+			mesh_face_color = blue_mesh_faces;
+			mesh_face_color(fprox,Eigen::all) = green_mesh_faces;
+		}
+	sim_end = std::chrono::steady_clock::now();
+	auto time_elapsed = std::chrono::duration_cast<std::chrono::duration<double,std::milli>>(sim_end-sim_start);
+
+	position_datastream(pos_data,qpoint,time_elapsed.count());
+	face_datastream(face_data,fprox,vprox,pprox,time_elapsed.count());
+	velocity_datastream(vel_data,qp_vel,time_elapsed.count());
+	
+	viewer.data().add_edges(origin,x_axis,Eigen::RowVector3d(1,0,0));
+	viewer.data().add_edges(origin,y_axis,Eigen::RowVector3d(0,1,0));
+	viewer.data().add_edges(origin,z_axis,Eigen::RowVector3d(0,0,1));
+	viewer.data().set_points(qpoint.curr_pos,Eigen::RowVector3d(1,1,1));
+	viewer.data().set_colors(mesh_face_color);
+	return false;
+}
+
+
+
+int main(int argc,char* argv[])
+{
+	//if(initialize_files(pos_data,face_data,vel_data))
+	//	{
+		//Initialize Mesh and the query_point
+		Trimesh = new MeshCloud(argv[1]);
+		mesh_vertices = Trimesh->Verts(); //Access the vertices of the mesh
+		mesh_vertex_normals = Trimesh->Nverts(); 
+		mesh_faces = Trimesh->Faces(); //Access the faces of the mesh
+
+
+		igl::opengl::glfw::Viewer viewer;
+
+		//Coloring the mesh annd the various parts of the visualization
+
+		
+		// Set viewer properties
+		viewer.data().set_mesh(mesh_vertices,mesh_faces);
+		//viewer.core().is_animating = true;
+		viewer.data().set_face_based(false);
+		viewer.data().show_lines = false;
+				mesh_face_color = RowVector3d(0.4,0.3,0.8).replicate(mesh_faces.rows(),1);
+				blue_mesh_faces = mesh_face_color;
+		//viewer.data().point_size = 4;
+		viewer.data().show_lines = false;
+		viewer.launch_init();
+		viewer.data().meshgl.init();
+		//sim_start = std::chrono::steady_clock::now();
+		//viewer.callback_pre_draw = &pre_draw;
+		/*const std::string user_input_usage(R"(User Input usage:
+  1     Move the query point +0.0001 cm in the X direction
+  2     Move the query point +0.0001 cm in the Y direction
+  3     Move the query point +0.0001 cm in the Z direction
+  4     Move the query point -0.0001 cm in the X direction
+  5     Move the query point -0.0001 cm in the Y direction
+  6     Move the query point -0.0001 cm in the Z direction
+  7     Rotate the query point +PI/10000 rads in around the X-Axis
+  8     Rotate the query point +PI/10000 rads in around the Y-Axis
+  9     Rotate the query point +PI/10000 rads in around the Z-Axis
+  0     Rotate the query point -PI/10000 rads in around the X-Axis
+  -     Rotate the query point -PI/10000 rads in around the Y-Axis
+  +     Rotate the query point -PI/10000 rads in around the Z-Axis
+  B/b   Toggle movement)");*/
+
+		//std::cout << user_input_usage << std::endl;
+
+		//	pos_data.close();
+		//	face_data.close();
+		//	vel_data.close();
+
+		viewer.launch_rendering(true);
+		viewer.launch_shut();
+		delete Trimesh;
+		//}
+	return 0;
+}

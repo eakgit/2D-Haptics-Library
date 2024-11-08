@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libigl_copyleft_core.a CMakeFiles/igl_copyleft_core.dir/include/igl/copyleft/marching_cubes.cpp.o CMakeFiles/igl_copyleft_core.dir/include/igl/copyleft/progressive_hulls.cpp.o CMakeFiles/igl_copyleft_core.dir/include/igl/copyleft/progressive_hulls_cost_and_placement.cpp.o CMakeFiles/igl_copyleft_core.dir/include/igl/copyleft/quadprog.cpp.o
+/usr/bin/ranlib ../../lib/libigl_copyleft_core.a

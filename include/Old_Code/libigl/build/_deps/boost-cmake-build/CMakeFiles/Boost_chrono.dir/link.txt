@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libboost_chrono.a CMakeFiles/Boost_chrono.dir/__/boost-src/libs/chrono/src/chrono.cpp.o CMakeFiles/Boost_chrono.dir/__/boost-src/libs/chrono/src/process_cpu_clocks.cpp.o CMakeFiles/Boost_chrono.dir/__/boost-src/libs/chrono/src/thread_clock.cpp.o
+/usr/bin/ranlib ../../lib/libboost_chrono.a

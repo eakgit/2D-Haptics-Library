@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/libigl-build/CMakeFiles/mpfr"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/libigl-build/CMakeFiles/mpfr.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/libigl-build/CMakeFiles/mpfr-complete.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-build.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-configure.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-download.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-install.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-mkdir.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-patch.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/mpfr/src/mpfr-stamp/mpfr-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"mpfr"
+		],
+		"name" : "mpfr"
+	}
+}

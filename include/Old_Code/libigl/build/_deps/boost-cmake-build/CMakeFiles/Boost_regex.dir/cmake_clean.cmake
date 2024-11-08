@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "../../lib/libboost_regex.a"
+  "../../lib/libboost_regex.pdb"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/c_regex_traits.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/c_regex_traits.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/cpp_regex_traits.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/cpp_regex_traits.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/cregex.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/cregex.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/fileiter.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/fileiter.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/icu.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/icu.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/instances.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/instances.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/posix_api.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/posix_api.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_debug.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_debug.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_raw_buffer.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_raw_buffer.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_traits_defaults.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/regex_traits_defaults.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/static_mutex.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/static_mutex.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/usinstances.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/usinstances.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/w32_regex_traits.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/w32_regex_traits.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/wc_regex_traits.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/wc_regex_traits.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/wide_posix_api.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/wide_posix_api.cpp.o.d"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/winstances.cpp.o"
+  "CMakeFiles/Boost_regex.dir/__/boost-src/libs/regex/src/winstances.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/Boost_regex.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libboost_date_time.a CMakeFiles/Boost_date_time.dir/__/boost-src/libs/date_time/src/gregorian/greg_month.cpp.o CMakeFiles/Boost_date_time.dir/__/boost-src/libs/date_time/src/gregorian/greg_weekday.cpp.o CMakeFiles/Boost_date_time.dir/__/boost-src/libs/date_time/src/gregorian/date_generators.cpp.o
+/usr/bin/ranlib ../../lib/libboost_date_time.a

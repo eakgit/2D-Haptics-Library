@@ -1,0 +1,117 @@
+Determining if the _WIN32 exist failed with the following output:
+Change Dir: /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b3d2c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b3d2c.dir/build.make CMakeFiles/cmTC_b3d2c.dir/build
+gmake[1]: Entering directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b3d2c.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++   -fPIC  -fPIE -o CMakeFiles/cmTC_b3d2c.dir/CheckSymbolExists.cxx.o -c /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: ‘_WIN32’ was not declared in this scope
+    7 |   return ((int*)(&_WIN32))[argc];
+      |                   ^~~~~~
+gmake[1]: *** [CMakeFiles/cmTC_b3d2c.dir/build.make:78: CMakeFiles/cmTC_b3d2c.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_b3d2c/fast] Error 2
+
+
+File /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _WIN32
+  return ((int*)(&_WIN32))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __APPLE__ exist failed with the following output:
+Change Dir: /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a41af/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a41af.dir/build.make CMakeFiles/cmTC_a41af.dir/build
+gmake[1]: Entering directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a41af.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++   -fPIC  -fPIE -o CMakeFiles/cmTC_a41af.dir/CheckSymbolExists.cxx.o -c /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: ‘__APPLE__’ was not declared in this scope; did you mean ‘__FILE__’?
+    7 |   return ((int*)(&__APPLE__))[argc];
+      |                   ^~~~~~~~~
+      |                   __FILE__
+gmake[1]: *** [CMakeFiles/cmTC_a41af.dir/build.make:78: CMakeFiles/cmTC_a41af.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_a41af/fast] Error 2
+
+
+File /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __APPLE__
+  return ((int*)(&__APPLE__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __ANDROID__ exist failed with the following output:
+Change Dir: /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d1974/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d1974.dir/build.make CMakeFiles/cmTC_d1974.dir/build
+gmake[1]: Entering directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d1974.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++   -fPIC  -fPIE -o CMakeFiles/cmTC_d1974.dir/CheckSymbolExists.cxx.o -c /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: ‘__ANDROID__’ was not declared in this scope
+    7 |   return ((int*)(&__ANDROID__))[argc];
+      |                   ^~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/cmTC_d1974.dir/build.make:78: CMakeFiles/cmTC_d1974.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_d1974/fast] Error 2
+
+
+File /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __ANDROID__
+  return ((int*)(&__ANDROID__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __FreeBSD__ exist failed with the following output:
+Change Dir: /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5aaed/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5aaed.dir/build.make CMakeFiles/cmTC_5aaed.dir/build
+gmake[1]: Entering directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5aaed.dir/CheckSymbolExists.cxx.o
+/usr/bin/g++   -fPIC  -fPIE -o CMakeFiles/cmTC_5aaed.dir/CheckSymbolExists.cxx.o -c /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: ‘__FreeBSD__’ was not declared in this scope
+    7 |   return ((int*)(&__FreeBSD__))[argc];
+      |                   ^~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/cmTC_5aaed.dir/build.make:78: CMakeFiles/cmTC_5aaed.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5aaed/fast] Error 2
+
+
+File /home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __FreeBSD__
+  return ((int*)(&__FreeBSD__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}

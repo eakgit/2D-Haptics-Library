@@ -1,0 +1,22 @@
+# Hashes of file build rules.
+c64b2c9c270b7cdceed3f066d31ab38f _deps/embree-build/CMakeFiles/uninstall
+628314a8aa367e3896d3b8c794c3803e _deps/embree-build/kernels/CMakeFiles/embree_check_stack_frame_size
+f3237fab7464cfef503bc3a0eff33c89 _deps/gmp/src/gmp-stamp/gmp-build
+dab5aa41c2f2e98f7b87456d9cc34b1a _deps/gmp/src/gmp-stamp/gmp-configure
+8e5757b92cc69b2c24c6b6737fdfd3a6 _deps/gmp/src/gmp-stamp/gmp-download
+19903ab98eda2343f619602eeeacca0a _deps/gmp/src/gmp-stamp/gmp-install
+02cbb190d3d730bb536930058d2693c5 _deps/gmp/src/gmp-stamp/gmp-mkdir
+fbca0565338cae72af9047017d936bf2 _deps/gmp/src/gmp-stamp/gmp-patch
+997079fb380effc767389b7dd75e4b4a _deps/gmp/src/gmp-stamp/gmp-test
+6a82f66aa4b196c01ac2c14a5e030d52 _deps/libigl-build/CMakeFiles/gmp
+dd3e7548e8a061d550f9b77bfe785781 _deps/libigl-build/CMakeFiles/gmp-complete
+6a82f66aa4b196c01ac2c14a5e030d52 _deps/libigl-build/CMakeFiles/mpfr
+79d37cb1fb37f9515c8019620e6193a9 _deps/libigl-build/CMakeFiles/mpfr-complete
+687f85b45238342532c003a50acd4d16 _deps/mpfr/src/mpfr-stamp/mpfr-build
+57d902daee6c9a96e71e5f120cbfadb8 _deps/mpfr/src/mpfr-stamp/mpfr-configure
+c86924611d1fd503fb3f92b05ea1b724 _deps/mpfr/src/mpfr-stamp/mpfr-download
+19ae7c0827468f2b5d97df278b12d397 _deps/mpfr/src/mpfr-stamp/mpfr-install
+471d7102a93f8ec0af9533243aff3906 _deps/mpfr/src/mpfr-stamp/mpfr-mkdir
+6afa8e78cdfe621bce5bd16f7a3a7561 _deps/mpfr/src/mpfr-stamp/mpfr-patch
+0899d15f8befe6d8cad2cd8d17e28e30 _deps/mpfr/src/mpfr-stamp/mpfr-test
+8093ad7b617310c9959110b15e3a0138 _deps/spectra-build/CMakeFiles/format

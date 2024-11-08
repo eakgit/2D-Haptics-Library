@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/CMakeFiles/predicates-populate"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/CMakeFiles/predicates-populate.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/CMakeFiles/predicates-populate-complete.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-build.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-configure.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-download.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-install.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-patch.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-test.rule"
+		},
+		{
+			"file" : "/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/_deps/predicates-subbuild/predicates-populate-prefix/src/predicates-populate-stamp/predicates-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"predicates-populate"
+		],
+		"name" : "predicates-populate"
+	}
+}

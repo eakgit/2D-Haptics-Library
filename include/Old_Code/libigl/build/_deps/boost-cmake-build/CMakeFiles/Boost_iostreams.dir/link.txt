@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libboost_iostreams.a CMakeFiles/Boost_iostreams.dir/__/boost-src/libs/iostreams/src/file_descriptor.cpp.o CMakeFiles/Boost_iostreams.dir/__/boost-src/libs/iostreams/src/mapped_file.cpp.o CMakeFiles/Boost_iostreams.dir/__/boost-src/libs/iostreams/src/gzip.cpp.o CMakeFiles/Boost_iostreams.dir/__/boost-src/libs/iostreams/src/zlib.cpp.o
+/usr/bin/ranlib ../../lib/libboost_iostreams.a
