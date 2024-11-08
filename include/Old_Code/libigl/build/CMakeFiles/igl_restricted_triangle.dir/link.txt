@@ -1,2 +1,0 @@
-/usr/bin/ar qc libigl_restricted_triangle.a CMakeFiles/igl_restricted_triangle.dir/_deps/libigl-src/include/igl/triangle/cdt.cpp.o CMakeFiles/igl_restricted_triangle.dir/_deps/libigl-src/include/igl/triangle/scaf.cpp.o CMakeFiles/igl_restricted_triangle.dir/_deps/libigl-src/include/igl/triangle/triangulate.cpp.o
-/usr/bin/ranlib libigl_restricted_triangle.a

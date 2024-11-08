@@ -1,1 +1,0 @@
-/usr/bin/g++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libstb.so -o ../../lib/libstb.so CMakeFiles/stb.dir/__/stb-build/stb_image.cpp.o 

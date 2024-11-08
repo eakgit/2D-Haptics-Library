@@ -1,1 +1,0 @@
-/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/Offset_Surface.dir/include/main.cc.o -o Offset_Surface  -Wl,-rpath,/home/kalu/Documents/Files/Engineering/Research/SBRM/Franka_Sigma_Codebase/libigl/build/lib lib/libigl_glfw.a lib/libigl_opengl.a lib/libigl_stb.a lib/libglfw.so.3.4 lib/libigl_opengl.a lib/libglad.so -ldl /usr/lib/x86_64-linux-gnu/libOpenGL.so lib/libigl.a lib/libstb.so 

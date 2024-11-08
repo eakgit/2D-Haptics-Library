@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libigl_glfw.a CMakeFiles/igl_glfw.dir/include/igl/opengl/glfw/Viewer.cpp.o CMakeFiles/igl_glfw.dir/include/igl/opengl/glfw/background_window.cpp.o CMakeFiles/igl_glfw.dir/include/igl/opengl/glfw/map_texture.cpp.o
-/usr/bin/ranlib ../../lib/libigl_glfw.a

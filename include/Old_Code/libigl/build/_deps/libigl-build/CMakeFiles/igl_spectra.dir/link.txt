@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libigl_spectra.a CMakeFiles/igl_spectra.dir/include/igl/spectra/eigs.cpp.o CMakeFiles/igl_spectra.dir/include/igl/spectra/lscm.cpp.o
-/usr/bin/ranlib ../../lib/libigl_spectra.a

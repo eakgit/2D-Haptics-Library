@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libigl_stb.a CMakeFiles/igl_stb.dir/include/igl/stb/read_image.cpp.o CMakeFiles/igl_stb.dir/include/igl/stb/write_image.cpp.o CMakeFiles/igl_stb.dir/include/igl/opengl/stb/render_to_file.cpp.o CMakeFiles/igl_stb.dir/include/igl/opengl/stb/render_to_file_async.cpp.o
-/usr/bin/ranlib ../../lib/libigl_stb.a

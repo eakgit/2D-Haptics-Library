@@ -1,1 +1,0 @@
-/usr/bin/gcc -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libpredicates.so -o ../../lib/libpredicates.so CMakeFiles/predicates.dir/predicates.c.o 

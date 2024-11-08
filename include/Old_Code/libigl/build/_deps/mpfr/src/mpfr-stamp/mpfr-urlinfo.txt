@@ -1,3 +1,0 @@
-repository='external project URL'
-module='https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz'
-tag='MD5=a25091f337f25830c16d2054d74b5af7'

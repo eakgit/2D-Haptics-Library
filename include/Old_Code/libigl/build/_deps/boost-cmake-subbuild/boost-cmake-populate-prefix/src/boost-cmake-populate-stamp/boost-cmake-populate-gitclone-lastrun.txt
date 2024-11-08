@@ -1,3 +1,0 @@
-repository='https://github.com/Orphis/boost-cmake.git'
-module=''
-tag='origin'

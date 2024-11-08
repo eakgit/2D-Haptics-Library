@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libboost_context.a CMakeFiles/Boost_context.dir/libs/context/jump_combined.S.o CMakeFiles/Boost_context.dir/libs/context/make_combined.S.o CMakeFiles/Boost_context.dir/libs/context/ontop_combined.S.o CMakeFiles/Boost_context.dir/__/boost-src/libs/context/src/posix/stack_traits.cpp.o
-/usr/bin/ranlib ../../lib/libboost_context.a
