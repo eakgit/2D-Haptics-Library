@@ -1,11 +1,12 @@
 #include "HapticScene.h"
 
+
 int main(int argc, char** argv)
 {
     //Create the files to store all the important datapoints
     std::fstream green_position,red_position,force;
-    green_position.open("../data/green_position_ch.csv",std::fstream::out|std::fstream::trunc);
-    red_position.open("../data/red_position_ch.csv",std::fstream::out|std::fstream::trunc);
+    green_position.open("../data/green_position.csv",std::fstream::out|std::fstream::trunc);
+    red_position.open("../data/red_position.csv",std::fstream::out|std::fstream::trunc);
     force.open("../data/force.csv",std::fstream::out|std::fstream::trunc);
 
     //CSV Formatting
@@ -14,7 +15,7 @@ int main(int argc, char** argv)
     force << "Time(s),Force_mag (N),Angle," << std::endl;
     std::chrono::time_point<std::chrono::steady_clock> start, end;
 
-    //Initialize the window, the convexs and the important datapoints
+    //Initialize the window, the circles and the important datapoints
     int screenWidth = SCREEN_W -120;
     int screenHeight = SCREEN_H - 120;
     HapticScene scr(screenWidth,screenHeight);
@@ -34,10 +35,10 @@ int main(int argc, char** argv)
         ClearBackground(BLACK);
 
 
-        scr.draw_convex(0,DARKBLUE); //Draw the base convex
+        scr.draw_convex(0,DARKBLUE); //Draw the base circle
         mospos = GetMousePosition(); //Get the current position of the mouse
 
-        //Get the forces between the various convexs
+        //Get the forces between the various circles
         force10 = Vector2Subtract(scr.convs_ref()[0]->center,scr.convs_ref()[1]->center);
         force02 = Vector2Subtract(scr.convs_ref()[0]->center,scr.convs_ref()[2]->center);
         force12 = Vector2Subtract(scr.convs_ref()[1]->center,scr.convs_ref()[2]->center);
@@ -45,40 +46,40 @@ int main(int argc, char** argv)
         Vector2 norm_force10 = Vector2Normalize(force10);
         Vector2 norm_force02 = Vector2Normalize(force02);
 
-        //Get the angle between the first and second convex centers
+        //Get the angle between the first and second circle centers
         float angle102 = Vector2Angle(norm_force10,norm_force02);
 
-        //If the green convex is moving and not colliding with the base convex
-        if(scr.convs_ref()[1]->phys && !scr.circle_collision(0,1))
+        //If the green circle is moving and not colliding with the base circle
+        if(scr.convs_ref()[1]->phys && !scr.convex_collision(0,1))
             {
-                //If the green convex is moving and not in contact with the base convex
-                //Set the current center of the green convex to the mouse position
+                //If the green circle is moving and not in contact with the base circle
+                //Set the current center of the green circle to the mouse position
                 force_mag = 0;
-                scr.move(mospos,1);
+                scr.move_convex(mospos,1);
                 scr.draw_convex(1,GREEN);
                 green_center = mospos;
             }
 
-        else if(scr.convs_ref()[1]->phys && scr.circle_collision(0,1))
+        else if(scr.convs_ref()[1]->phys && scr.convex_collision(0,1))
             {
-                //If the green convex is moving and in contact with the base convex
-                //stop moving that convex and start using the red convex as the convex
+                //If the green circle is moving and in contact with the base circle
+                //stop moving that circle and start using the red circle as the circle
                 //of mouse movement
                 scr.convs_ref()[1]->phys = false;
                 scr.convs_ref()[2]->phys = true;
 
 
                 scr.draw_convex(2,RED);
-                scr.move(mospos,2);
+                scr.move_convex(mospos,2);
 
-                //Make sure the green convex moves in the direction of the angle difference
+                //Make sure the green circle moves in the direction of the angle difference
                 if((std::abs(angle102) >= 0.0625) && (std::abs(angle102) <= M_PI-0.0625))
                     green_center = rotate_point(scr.convs_ref()[1]->center,scr.convs_ref()[0]->center, min(angle102,-angle102));
 
-                scr.move(green_center,1);
+                scr.move_convex(green_center,1);
                 scr.draw_convex(1,GREEN);
                 //Set the force of the spring
-                force_mag = 2.4525*scr.center_distance(1,2);
+                force_mag = -2.4525*scr.distance(1,2);
 
                //DrawText(TextFormat("Angle between Force_0-1 and Force_2-0 : %f",angle102), 10, 70, 20, WHITE);
                 DrawLineV(scr.convs_ref()[1]->center,scr.convs_ref()[0]->center,SKYBLUE);
@@ -86,17 +87,17 @@ int main(int argc, char** argv)
                 DrawLineV(scr.convs_ref()[2]->center,scr.convs_ref()[1]->center,MAROON);
             }
 
-        else if(scr.convs_ref()[2]->phys && scr.circle_collision(0,2))
+        else if(scr.convs_ref()[2]->phys && scr.convex_collision(0,2))
             {
 
                 scr.draw_convex(2,RED);
-                scr.move(mospos,2);
+                scr.move_convex(mospos,2);
                 if((std::abs(angle102) >= 0.0625 ) && (std::abs(angle102) <= M_PI-0.0625))
                             green_center = rotate_point(scr.convs_ref()[1]->center,scr.convs_ref()[0]->center,angle102);
 
-                scr.move(green_center,1);
+                scr.move_convex(green_center,1);
                 scr.draw_convex(1,GREEN);
-                force_mag = 2.4525*scr.center_distance(1,2);
+                force_mag = -2.4525*scr.distance(1,2);
 
                 //DrawText(TextFormat("Angle between Force_0-1 and Force_2-0 : %f",angle102), 10, 70, 20, WHITE);
                 DrawLineV(scr.convs_ref()[1]->center,scr.convs_ref()[0]->center,SKYBLUE);
@@ -104,14 +105,14 @@ int main(int argc, char** argv)
                 DrawLineV(scr.convs_ref()[2]->center,scr.convs_ref()[1]->center,MAROON);
             }
 
-        else if(scr.convs_ref()[2]->phys && !scr.circle_collision(0,2))
+        else if(scr.convs_ref()[2]->phys && !scr.convex_collision(0,2))
             {
-                //Return to the original movement state when exiting the base convex
+                //Return to the original movement state when exiting the base circle
 
                 scr.convs_ref()[1]->phys = true;
                 scr.convs_ref()[2]->phys = false;
-                force_mag = 2.4525*scr.center_distance(1,2);
-                scr.move(mospos,1);
+                force_mag = -2.4525*scr.distance(1,2);
+                scr.move_convex(mospos,1);
                 scr.draw_convex(1,GREEN);
                 green_center = mospos;
 
@@ -120,14 +121,14 @@ int main(int argc, char** argv)
         end = std::chrono::steady_clock::now();
         std::chrono::duration<double> elapsed_seconds = end - start;
 
-        //Print the green convex data to its corresponding file
+        //Print the green circle data to its corresponding file
         green_position << elapsed_seconds.count() << "," << scr.convs_ref()[1]->center_f.x << "," <<  scr.convs_ref()[1]->center_f.y << "," << std::endl;
-        //Print the red convex data to its corresponding file
+        //Print the red circle data to its corresponding file
         red_position << elapsed_seconds.count() << "," << scr.convs_ref()[2]->center_f.x << "," <<  scr.convs_ref()[2]->center_f.y << "," << std::endl;
         //Print the force data to its corresponding file
         force << elapsed_seconds.count() << "," << force_mag << "," << abs_angle << "," << std::endl;
 
-       //Print all the data on screen in real time
+        //Print all the data on screen in real time
         DrawRectangleLines(10,10,400,300,WHITE);
         DrawText(TextFormat("Elpased Time (seconds): %f",elapsed_seconds.count()),20,20,20,WHITE);
         DrawText(TextFormat("Green Position: [%f,%f]",scr.convs_ref()[1]->center_f.x,scr.convs_ref()[1]->center_f.y),20,45,20,WHITE);

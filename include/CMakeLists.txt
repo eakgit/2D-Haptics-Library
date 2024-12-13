@@ -4,12 +4,16 @@ project(Circle_Haptics)
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(PHYSAC_HEADER /usr/local/include/physac.h)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Dependencies
 set(RAYLIB_VERSION 5.5)
 find_package(raylib ${RAYLIB_VERSION} REQUIRED) # QUIET or REQUIRED
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # Our Project
 file( GLOB APP_SOURCES *.cc )
@@ -19,5 +23,5 @@ foreach( testsourcefile ${APP_SOURCES} )
     add_executable( ${testname} ${testsourcefile} ${PHYSAC_HEADER})
     # Make sure YourLib is linked to each app
     set(raylib_VERBOSE 1)
-    target_link_libraries( ${testname} raylib Threads::Threads m)
+    target_link_libraries( ${testname} raylib Threads::Threads Eigen3::Eigen m)
 endforeach( testsourcefile ${APP_SOURCES} )
