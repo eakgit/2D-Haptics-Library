@@ -1,0 +1,43 @@
+Consolidate compiler generated dependencies of target 2D_circle_haptics
+[ 25%] Building CXX object CMakeFiles/2D_circle_haptics.dir/2D_circle_haptics.cc.o
+In file included from /home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:1:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h: In member function ‘Vector2 HapticScene::force_direction(int, int, std::vector<Vector2>)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:304:31: error: invalid operands of types ‘<unresolved overloaded function type>’ and ‘int’ to binary ‘operator==’
+  304 |                     if (index == convs[pc]->edge_num-1)
+      |                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc: In function ‘int main(int, char**)’:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:53:61: error: no matching function for call to ‘HapticScene::convex_collision(int, int)’
+   53 |         if(scr.convs_ref()[1]->phys && !scr.convex_collision(0,1))
+      |                                         ~~~~~~~~~~~~~~~~~~~~^~~~~
+In file included from /home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:1:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note: candidate: ‘bool HapticScene::convex_collision(int, int, std::vector<Vector2>&, int&, int&)’
+  222 |         bool convex_collision(int i1,int i2,std::vector<Vector2>& points,int& poly_case,int& index)
+      |              ^~~~~~~~~~~~~~~~
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note:   candidate expects 5 arguments, 2 provided
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:63:65: error: no matching function for call to ‘HapticScene::convex_collision(int, int)’
+   63 |         else if(scr.convs_ref()[1]->phys && scr.convex_collision(0,1))
+      |                                             ~~~~~~~~~~~~~~~~~~~~^~~~~
+In file included from /home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:1:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note: candidate: ‘bool HapticScene::convex_collision(int, int, std::vector<Vector2>&, int&, int&)’
+  222 |         bool convex_collision(int i1,int i2,std::vector<Vector2>& points,int& poly_case,int& index)
+      |              ^~~~~~~~~~~~~~~~
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note:   candidate expects 5 arguments, 2 provided
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:90:65: error: no matching function for call to ‘HapticScene::convex_collision(int, int)’
+   90 |         else if(scr.convs_ref()[2]->phys && scr.convex_collision(0,2))
+      |                                             ~~~~~~~~~~~~~~~~~~~~^~~~~
+In file included from /home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:1:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note: candidate: ‘bool HapticScene::convex_collision(int, int, std::vector<Vector2>&, int&, int&)’
+  222 |         bool convex_collision(int i1,int i2,std::vector<Vector2>& points,int& poly_case,int& index)
+      |              ^~~~~~~~~~~~~~~~
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note:   candidate expects 5 arguments, 2 provided
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:108:66: error: no matching function for call to ‘HapticScene::convex_collision(int, int)’
+  108 |         else if(scr.convs_ref()[2]->phys && !scr.convex_collision(0,2))
+      |                                              ~~~~~~~~~~~~~~~~~~~~^~~~~
+In file included from /home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/2D_circle_haptics.cc:1:
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note: candidate: ‘bool HapticScene::convex_collision(int, int, std::vector<Vector2>&, int&, int&)’
+  222 |         bool convex_collision(int i1,int i2,std::vector<Vector2>& points,int& poly_case,int& index)
+      |              ^~~~~~~~~~~~~~~~
+/home/kalu/Documents/Files/Engineering/Research/SBRM/Sigma_Codebase/include/HapticScene.h:222:14: note:   candidate expects 5 arguments, 2 provided
+make[2]: *** [CMakeFiles/2D_circle_haptics.dir/build.make:76: CMakeFiles/2D_circle_haptics.dir/2D_circle_haptics.cc.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:85: CMakeFiles/2D_circle_haptics.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2

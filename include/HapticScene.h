@@ -12,20 +12,20 @@
 #include "MiscFunctions.h"
 
 
-#define PHYSAC_IMPLEMENTATION
-#include "physac.h"
+//#define PHYSAC_IMPLEMENTATION
+//#include "physac.h"
 
 #define SCREEN_W 1920
 #define SCREEN_H 1080
 #define     F_PI                        3.14159265358979323846f
-#define     PHYSAC_FLT_MAX              3.402823466e+38f
-#define     PHYSAC_EPSILON              0.000001f
-#define     PHYSAC_K                    1.0f/3.0f
-#define     PHYSAC_VECTOR_ZERO          (Vector2){ 0.0f, 0.0f }
+//#define     PHYSAC_FLT_MAX              3.402823466e+38f
+//#define     PHYSAC_EPSILON              0.000001f
+//#define     PHYSAC_K                    1.0f/3.0f
+//#define     PHYSAC_VECTOR_ZERO          (Vector2){ 0.0f, 0.0f }
 
 
 
-
+//Struct representing a convex shape, which can either be a circle or a polygon
 struct RConvex
 {
     RConvex(Vector2 center_,int radius_,int gcd_,int side_num = INT_MAX, bool physics = false)
@@ -60,7 +60,7 @@ struct RConvex
     ~RConvex()
     {
         center = center_f = {0};
-        radius_i - 0; radius_f = 0;
+        radius_i = 0; radius_f = 0;
         edge_num = 0;
         vertices.clear();
         normals.clear();
@@ -81,7 +81,7 @@ struct RConvex
     std::vector<Vector2> normals;
 };
 
-
+//Circle struct. Uses the move function specific to circles
 struct RCircle: public RConvex
 {
     RCircle(Vector2 center_,int radius_,int gcd_, bool physics) : RConvex(center_,radius_,gcd_,INT_MAX,physics) {}
@@ -92,6 +92,7 @@ struct RCircle: public RConvex
     }
 };
 
+//Convex polygon struct. Unique constructor to generate the shape and to move the polygon.
 struct RPolygon: public RConvex
 {
      RPolygon(Vector2 center_,int radius_,int gcd_, int side_num,bool physics) : RConvex(center_,radius_,gcd_,side_num,physics)
@@ -126,13 +127,16 @@ struct RPolygon: public RConvex
 };
 
 
-//TODO: Integrate the Physac Library with the HapticScene class
+//Class representing the window containing the actual envirnonment running the haptic simulation
 class HapticScene
 {
     public:
+        //Class constructor
         HapticScene(int width_,int height_)
         {
-            SetConfigFlags(FLAG_MSAA_4X_HINT);
+            SetConfigFlags(FLAG_MSAA_4X_HINT); //Anti-aliasing settings
+
+            //Checking the screen width and height to make sure it is valid
             if (width_ > 0 && height_)
             {
                 width = width_;
@@ -143,6 +147,7 @@ class HapticScene
                 width = SCREEN_W;
                 height= SCREEN_H;
             }
+
             pix_unit = gcd_func(width,height);
             conv_num = 0;
             InitWindow(width, height, "HapticScene (Mouse Interface)");
@@ -151,13 +156,16 @@ class HapticScene
             SetTargetFPS(120);
         }
 
+        //Class destrtuctor
         ~HapticScene()
         {
             for(int i = 0; i < conv_num; ++i)
                 delete convs[i];
+            conv_num = 0;
             CloseWindow();
         }
 
+        //Generate a convex shape for simulation (the first one is always immobile)
         void create_convex(Vector2 center,int radius, bool physics,int side_num = INT_MAX)
         {
             if (convs.size()==0)
@@ -182,11 +190,12 @@ class HapticScene
             return;
         }
 
+
         const std::vector<RConvex*>& convs_ref() {return convs;}
         std::vector<RConvex*>& convs_ref(int i) {return convs;}
 
 
-
+        //Moves a given convex shape if in a valid range
         void move_convex(Vector2 pos,int i)
         {
             if ((i <= 0) || ( i >= conv_num))
@@ -195,6 +204,8 @@ class HapticScene
                 convs[i]->move(pos);
         }
 
+
+        //Draws a given convex shape convs[i] with color Color
         void draw_convex(int i,Color color)
         {
             if ((i < 0) || ( i >= conv_num))
@@ -218,36 +229,61 @@ class HapticScene
 
         float distance_square(int i,int k) {return center_distance_square(convs[i]->center_f,convs[k]->center_f);}
         float distance(int i,int k) {return center_distance(convs[i]->center_f,convs[k]->center_f);}
-        bool convex_collision(int i1,int i2)
+        //Collision detection for the various cases (circle-circle, polygon-polygon, circle-polygon)
+        bool convex_collision(int i1,int i2,std::vector<Vector2>& points,int& poly_case,int& index)
         {
-            return circle_collision(convs[i1]->center_f,convs[i2]->center_f,convs[i1]->radius_f,convs[i2]->radius_f);
-        }
 
-
-
-        float force_mag(int c1,int c2)
-        {
-            if (!convex_collision(c1,c2))
-                return 0.0;
-            else
-                return -2.4525*distance(c1,c2);
-        }
-
-
-        Vector2 force_direction(int c1,int c2)
-        {
-            Vector2 normal;
-            if(!convex_collision(c1,c2))
-                normal = {0};
-
-            else
+            bool collision = false;
+            if (convs[i1]->edge_num == INT_MAX && convs[i2]->edge_num == INT_MAX)
             {
-                normal = Vector2Normalize((Vector2){(convs[c2]->center_f.x-convs[c1]->center_f.x),
-                    (convs[c2]->center_f.y-convs[c1]->center_f.y)});
+                poly_case = 0;
+                collision =  circle_collision(convs[i1]->center_f,convs[i2]->center_f,convs[i1]->radius_f,convs[i2]->radius_f,points);
+                return collision;
             }
 
-            return normal;
+
+            else if (convs[i1]->edge_num != INT_MAX && convs[i2]->edge_num == INT_MAX)
+            {
+                poly_case = 1;
+                for (int i = 0; i < convs[i1]->edge_num; ++i)
+                {
+                    if (i == convs[i1]->edge_num-1)
+                        collision =  circle_line_collision(convs[i1]->vertices[i],convs[i1]->vertices[0],convs[i2]->center,convs[i2]->radius_i,points);
+                    else
+                        collision =  circle_line_collision(convs[i1]->vertices[i],convs[i1]->vertices[i+1],convs[i2]->center,convs[i2]->radius_i,points);
+                    if (collision)
+                    {
+                        index = i;
+                        return true;
+                    }
+                }
+
+            }
+
+
+
+            else if (convs[i1]->edge_num == INT_MAX && convs[i2]->edge_num != INT_MAX)
+            {
+                poly_case = 2;
+
+                for (int i = 0; i < convs[i2]->edge_num; ++i)
+                {
+                    if (i == convs[i2]->edge_num-1)
+                        collision  = circle_line_collision(convs[i2]->vertices[i],convs[i2]->vertices[0],convs[i1]->center,convs[i1]->radius_i,points);
+                    else
+                        collision =  circle_line_collision(convs[i2]->vertices[i],convs[i2]->vertices[i+1],convs[i1]->center,convs[i1]->radius_i,points);
+                    if (collision)
+                    {
+                        index = i;
+                        return true;
+                    }
+                }
+            }
+
+
+            return false;
         }
+
 
 
     private:

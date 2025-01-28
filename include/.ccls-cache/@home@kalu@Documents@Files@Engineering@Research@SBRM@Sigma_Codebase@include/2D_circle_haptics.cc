@@ -5,9 +5,14 @@ int main(int argc, char** argv)
 {
     //Create the files to store all the important datapoints
     std::fstream green_position,red_position,force;
+    std::vector<Vector2> colpoints1,colpoints2;
+    int col_pc1,col_index1,col_pc2,col_index2;
+
     green_position.open("../data/green_position.csv",std::fstream::out|std::fstream::trunc);
     red_position.open("../data/red_position.csv",std::fstream::out|std::fstream::trunc);
     force.open("../data/force.csv",std::fstream::out|std::fstream::trunc);
+
+
 
     //CSV Formatting
     green_position << "Time(s),X,Y," << std::endl;
@@ -50,7 +55,7 @@ int main(int argc, char** argv)
         float angle102 = Vector2Angle(norm_force10,norm_force02);
 
         //If the green circle is moving and not colliding with the base circle
-        if(scr.convs_ref()[1]->phys && !scr.convex_collision(0,1))
+        if(scr.convs_ref()[1]->phys && !scr.convex_collision(0,1,colpoints1,col_pc1,col_index1))
             {
                 //If the green circle is moving and not in contact with the base circle
                 //Set the current center of the green circle to the mouse position
@@ -60,7 +65,7 @@ int main(int argc, char** argv)
                 green_center = mospos;
             }
 
-        else if(scr.convs_ref()[1]->phys && scr.convex_collision(0,1))
+        else if(scr.convs_ref()[1]->phys && scr.convex_collision(0,1,colpoints1,col_pc1,col_index1))
             {
                 //If the green circle is moving and in contact with the base circle
                 //stop moving that circle and start using the red circle as the circle
@@ -87,7 +92,7 @@ int main(int argc, char** argv)
                 DrawLineV(scr.convs_ref()[2]->center,scr.convs_ref()[1]->center,MAROON);
             }
 
-        else if(scr.convs_ref()[2]->phys && scr.convex_collision(0,2))
+        else if(scr.convs_ref()[2]->phys && scr.convex_collision(0,2,colpoints2,col_pc2,col_index2))
             {
 
                 scr.draw_convex(2,RED);
@@ -97,7 +102,7 @@ int main(int argc, char** argv)
 
                 scr.move_convex(green_center,1);
                 scr.draw_convex(1,GREEN);
-                force_mag = -2.4525*scr.distance(1,2);
+                force_mag = 2.4525*scr.distance(1,2);
 
                 //DrawText(TextFormat("Angle between Force_0-1 and Force_2-0 : %f",angle102), 10, 70, 20, WHITE);
                 DrawLineV(scr.convs_ref()[1]->center,scr.convs_ref()[0]->center,SKYBLUE);
@@ -105,13 +110,13 @@ int main(int argc, char** argv)
                 DrawLineV(scr.convs_ref()[2]->center,scr.convs_ref()[1]->center,MAROON);
             }
 
-        else if(scr.convs_ref()[2]->phys && !scr.convex_collision(0,2))
+        else if(scr.convs_ref()[2]->phys && !scr.convex_collision(0,2,colpoints2,col_pc2,col_index2))
             {
                 //Return to the original movement state when exiting the base circle
 
                 scr.convs_ref()[1]->phys = true;
                 scr.convs_ref()[2]->phys = false;
-                force_mag = -2.4525*scr.distance(1,2);
+                force_mag = 2.4525*scr.distance(1,2);
                 scr.move_convex(mospos,1);
                 scr.draw_convex(1,GREEN);
                 green_center = mospos;
