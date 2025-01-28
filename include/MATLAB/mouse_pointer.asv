@@ -1,7 +1,0 @@
-fig = figure();
-ax = axes(fig);
-fig.WindowButtonMotionFcn = {@mouseMotionCB, ax};
-function curr_point = mouseMotionCB(fig, event, ax_handle)
-    %fprintf('Current Point is %f %f\n', ax_handle.CurrentPoint(1,1:2));
-    curr_point = ax_handle.CurrentPoint(1,1:2);
-end
